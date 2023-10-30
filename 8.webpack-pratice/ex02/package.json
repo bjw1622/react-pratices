@@ -1,0 +1,16 @@
+{
+  "name": "ex02",
+  "version": "1.0.0",
+  "description": "ex01 : js Module 번들링 하기",
+  "main": "dev-server.js",
+  "scripts": {
+    "start": "node dev-server",
+    "build": "npx webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}

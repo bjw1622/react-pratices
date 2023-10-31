@@ -1,25 +1,16 @@
-import React from "react";
-import Header from "./Header";
+import React from 'react';
+import Header from './Header';
+import Contents from './Contents';
 
-/*   
-    리액트 컴포넌트는 단일 루트 노드만 렌더링 할 수 있다
-
-    오류:
-    return (
-        <h2>01</h2>
-        <p></p>
-    )
-    
-    이유 :
-      React.createElement('h2', null, '01')
- */
 function App() {
-  return (
-    <>
-      <Header />
-      <Contetn />
-    </>
-  );
+    // return (
+    //     <div id='App'>
+    //         <Header />
+    //         <Contents />            
+    //     </div>
+    // );
+
+    return React.createElement('div', null, React.createElement(Header, null), React.createElement(Contents, null))
 }
 
-export default App;
+export {App};

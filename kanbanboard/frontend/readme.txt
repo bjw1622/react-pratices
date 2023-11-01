@@ -1,4 +1,4 @@
-Emaillist : frontend
+Kanbanboard: Frontend
 
 1.  설치
     1)  개발툴

@@ -2,15 +2,14 @@ import React from "react";
 import styles from "./assets/scss/TaskList.scss";
 
 const TaskList = ({ task }) => {
-  console.log(task);
   return (
-    <div class={styles.TaskList}>
+    <div className={styles.TaskList}>
       <ul>
         {task.map((t) => {
           return (
-            <li class={styles.TaskList__Task}>
+            <li className={styles.TaskList__Task} key={t.no}>
               <input type="checkbox" checked={t.done} /> {t.name}
-              <a href="#" class={styles.TaskList__Task_remove}></a>
+              <a href="#" className={styles.TaskList__Task_remove}></a>
             </li>
           );
         })}

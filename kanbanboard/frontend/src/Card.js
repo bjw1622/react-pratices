@@ -7,9 +7,9 @@ const Card = ({ cards }) => {
     <>
       {cards.map((card) => {
         return (
-          <div class={styles.Card}>
-            <div class={styles.Card__Title}>{card.title}</div>
-            <div class={styles.Card__Details}>
+          <div className={styles.Card} key={card.no}>
+            <div className={styles.Card__Title}>{card.title}</div>
+            <div className={styles.Card__Details}>
               {card.description}
               {card.tasks.length !== 0 ? <TaskList task={card.tasks} /> : ""}
             </div>

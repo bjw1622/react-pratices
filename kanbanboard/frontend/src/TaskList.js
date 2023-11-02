@@ -8,7 +8,8 @@ const TaskList = ({ task }) => {
         {task.map((t) => {
           return (
             <li className={styles.TaskList__Task} key={t.no}>
-              <input type="checkbox" checked={t.done} /> {t.name}
+              <input type="checkbox" checked={t.done} onChange={() => {}} />{" "}
+              {t.name}
               <a href="#" className={styles.TaskList__Task_remove}></a>
             </li>
           );

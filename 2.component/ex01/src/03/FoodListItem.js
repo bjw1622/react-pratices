@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-function FoodListItem({ name, count }) {
-  return (
-    <li>
-      {name}: {count}
-    </li>
-  );
+function FoodListItem({name, count}) {
+    return (
+        <li>{name}: {count}</li>
+    );
 }
 
 export default FoodListItem;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./assets/scss/App.scss";
 import Clock from "./Clock";
 
-export default function App() {
+const App = () => {
   let today = new Date();
 
   let hours = today.getHours();
@@ -31,4 +31,5 @@ export default function App() {
       />
     </>
   );
-}
+};
+export default App;

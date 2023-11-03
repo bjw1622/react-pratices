@@ -13,13 +13,13 @@ export default function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTicks((prevTicks) => prevTicks + 1);
+      setTicks(ticks + 1);
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  });
+  }, [ticks]);
 
   return (
     <>

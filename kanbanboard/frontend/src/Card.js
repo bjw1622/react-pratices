@@ -16,16 +16,27 @@ const Card = ({ cards }) => {
       {cards.map((card, i) => {
         return (
           <div className={styles.Card} key={card.no}>
-            <div className={styles.Card__Title} onClick={() => clickBtn(i)}>
-              {card.title}
-            </div>
             {isCheckedList[i] === true ? (
-              <div className={styles.Card__Details}>
-                {card.description}
-                {card.tasks.length !== 0 ? <TaskList task={card.tasks} /> : ""}
-              </div>
+              <>
+                <div
+                  className={styles.Card__Title__is_open}
+                  onClick={() => clickBtn(i)}
+                >
+                  {card.title}
+                </div>
+                <div className={styles.Card__Details}>
+                  {card.description}
+                  {card.tasks.length !== 0 ? (
+                    <TaskList task={card.tasks} />
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </>
             ) : (
-              ""
+              <div className={styles.Card__Title} onClick={() => clickBtn(i)}>
+                {card.title}
+              </div>
             )}
           </div>
         );

@@ -10,12 +10,11 @@ const App = () => {
   let seconds = today.getSeconds();
 
   const [ticks, setTicks] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setTicks(ticks + 1);
     }, 1000);
-
+    console.log(interval);
     return () => {
       clearInterval(interval);
     };

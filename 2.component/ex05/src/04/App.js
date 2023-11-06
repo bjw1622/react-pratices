@@ -1,34 +1,45 @@
-import React, { useState, useEffect } from "react";
-import "./assets/scss/App.scss";
-import Clock from "./Clock";
+import React, {useState, useEffect} from 'react';
+import './assets/scss/App.scss'
+import Clock from './Clock';
 
-const App = () => {
-  let today = new Date();
+export default function App() {
+    const getCurrentClockTime = () => {
+        const now = new Date();
+        const hours = now.getHours();
 
-  let hours = today.getHours();
-  let minutes = today.getMinutes();
-  let seconds = today.getSeconds();
+        return {
+            hours: ('0' + (hours > 12 ? hours - 12 : hours)).slice(-2),
+            minutes: ('0' + now.getMinutes()).slice(-2),
+            seconds: ('0' + now.getSeconds()).slice(-2),
+            session: hours > 12 ? 'pm': 'am'
+        }
+    }
 
-  const [ticks, setTicks] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTicks(ticks + 1);
-    }, 1000);
-    console.log(interval);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [ticks]);
+    const [currentTime, setCurrentTime] = useState(getCurrentClockTime());
+    const [ticks, setTicks] = useState(0);
 
-  return (
-    <>
-      <Clock
-        message={`ex05: Ticks | ${ticks}`}
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
-      />
-    </>
-  );
-};
-export default App;
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentTime(getCurrentClockTime());
+            setTicks(x => x+1);
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalId);
+        }
+    }, []);
+
+    return(
+        <>
+            {
+                ticks % 10 === 0 ?
+                null :
+                <Clock
+                    message={`ex05-Component LifeCycle: ${ticks}`}
+                    hours={currentTime.hours}
+                    minutes={currentTime.minutes}
+                    seconds={currentTime.seconds}/>
+            }
+        </>
+    );    
+}

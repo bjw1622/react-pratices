@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./assets/scss/App.scss";
 import RegisterForm from "./RegisterForm";
 import SearchBar from "./SearchBar";
 import Emaillist from "./Emaillist";
-// import data from './assets/json/data';
 
 function App() {
   const [emails, setEmails] = useState(null);
@@ -17,24 +16,55 @@ function App() {
     setEmails(newEmails);
   };
 
-  useEffect(async () => {
+  const addEmail = async (email) => {
+    const response = await fetch("/api", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(email),
+    });
+    const json = await response.json();
+    console.log(json);
+    setEmails([json.data, ...emails]);
+  };
+
+  const fetchList = async () => {
     try {
       const response = await fetch("/api", {
         method: "get",
-        header: {
+        headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: null,
       });
-      console.log(response);
+
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+
+      const json = await response.json();
+
+      if (json.result !== "success") {
+        throw new Error(`${json.result} ${json.message}`);
+      }
+
+      console.log(json.data);
+      setEmails(json.data);
     } catch (err) {
       console.error(err);
     }
+  };
+
+  useEffect(() => {
+    fetchList();
   }, []);
 
   return (
     <div id={"App"}>
-      <RegisterForm />
+      <RegisterForm addEmail={addEmail} />
       <SearchBar searchEmail={searchEmail} />
       {emails === null ? null : <Emaillist emails={emails} />}
     </div>

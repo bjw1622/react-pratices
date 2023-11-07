@@ -57,16 +57,15 @@ function App() {
       console.error(err);
     }
   };
-
   useEffect(() => {
     fetchList();
   }, []);
-
   return (
     <div id={"App"}>
-      <RegisterForm addEmail={addEmail} />
-      <SearchBar searchEmail={searchEmail} />
-      {emails === null ? null : <Emaillist emails={emails} />}
+      {" "}
+      <RegisterForm addEmail={addEmail} />{" "}
+      <SearchBar searchEmail={searchEmail} />{" "}
+      {emails === null ? null : <Emaillist emails={emails} />}{" "}
     </div>
   );
 }

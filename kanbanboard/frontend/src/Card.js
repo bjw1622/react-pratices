@@ -1,48 +1,32 @@
-import React, { useState } from "react";
-import TaskList from "./TaskList";
-import styles from "./assets/scss/Card.scss";
+import React, {useState} from 'react';
+import styles from './assets/scss/Card.scss';
+import TaskList from './TaskList';
 
-const Card = ({ cards }) => {
-  const [isCheckedList, setIsCheckedList] = useState(cards.map(() => false));
+const Card = ({no, title, description, tasks}) => {
+    const [showDetails, setShowDetails] = useState(false);
 
-  const clickBtn = (i) => {
-    const updatedIsCheckedList = [...isCheckedList];
-    updatedIsCheckedList[i] = !updatedIsCheckedList[i];
-    setIsCheckedList(updatedIsCheckedList);
-  };
-
-  return (
-    <>
-      {cards.map((card, i) => {
-        return (
-          <div className={styles.Card} key={card.no}>
-            {isCheckedList[i] === true ? (
-              <>
-                <div
-                  className={styles.Card__Title__is_open}
-                  onClick={() => clickBtn(i)}
-                >
-                  {card.title}
-                </div>
+    return (
+        <div className={styles.Card}>
+            <div
+                className={
+                    showDetails ?
+                        [styles.Card__Title, styles.Card__Title__open].join(' '):
+                        styles.Card__Title
+                }
+                onClick={e => {
+                    setShowDetails(!showDetails);
+                }}>
+                {title}
+            </div>
+            {showDetails ? 
                 <div className={styles.Card__Details}>
-                  {card.description}
-                  {card.tasks.length !== 0 ? (
-                    <TaskList task={card.tasks} />
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </>
-            ) : (
-              <div className={styles.Card__Title} onClick={() => clickBtn(i)}>
-                {card.title}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </>
-  );
+                    {description}
+                    <TaskList tasks={tasks}/>
+                </div>:
+                null
+            }   
+        </div>
+    );
 };
 
 export default Card;

@@ -1,22 +1,26 @@
-import React from "react";
-import styles from "./assets/scss/TaskList.scss";
+import React, {useState} from 'react';
+import Task from './Task';
+import styles from './assets/css/TaskList.css';
 
-const TaskList = ({ task }) => {
-  return (
-    <div className={styles.TaskList}>
-      <ul>
-        {task.map((t) => {
-          return (
-            <li className={styles.TaskList__Task} key={t.no}>
-              <input type="checkbox" checked={t.done} onChange={() => {}} />{" "}
-              {t.name}
-              <a href="#" className={styles.TaskList__Task_remove}></a>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
+const TaskList = ({tasks}) => {
+
+    return (
+        <div>
+            <ul>
+                {
+                    tasks.map(task => <Task
+                                        key={task.no}
+                                        no={task.no}                                        
+                                        name={task.name}
+                                        done={task.done} />)
+                }
+            </ul>
+            <input
+                type='text'
+                placeholder={'태스크 추가'}
+                className={styles.TaskList__add_task}/>
+        </div>
+    );
 };
 
 export default TaskList;

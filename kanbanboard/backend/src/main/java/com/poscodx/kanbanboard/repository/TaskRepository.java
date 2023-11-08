@@ -11,7 +11,7 @@ import com.poscodx.kanbanboard.vo.TaskVo;
 
 @Repository
 public class TaskRepository {
-
+	
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -22,7 +22,7 @@ public class TaskRepository {
 	public Boolean insert(TaskVo taskVo) {
 		return sqlSession.insert("task.insert", taskVo) == 1;
 	}
-
+	
 
 
 	public Boolean updateDone(Long no, String done) {
@@ -31,5 +31,9 @@ public class TaskRepository {
 		    put("done", done);
 		}}) == 1;
 
+	}
+
+	public Boolean delete(Long no) {
+		return sqlSession.delete("task.delete", no) == 1;		
 	}
 }

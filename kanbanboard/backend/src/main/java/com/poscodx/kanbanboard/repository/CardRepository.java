@@ -12,7 +12,7 @@ import com.poscodx.kanbanboard.vo.CardVo;
 public class CardRepository {
 	@Autowired
 	private SqlSession sqlSession;
-
+	
 	public List<CardVo> findAll() {
 		return sqlSession.selectList("card.findAll");
 	}

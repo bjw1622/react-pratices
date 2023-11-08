@@ -1,7 +1,7 @@
 {
   "name": "3.routing",
   "version": "1.0.0",
-  "description": "### ex01: React Router Basic I: Implemented in a Simple Way(hashchange event driven) ### ex02: React Router Basic II: HTML5 history API ### ex03: React Router Basic III: HashRouter &amp; BrowserRouter ### ex04: React Router Basic V: Link VS NavLink ### ex05: Styling &amp; Semantic Markup ### ex06: Composition ### ex07: Nesting Routes ### ex08: BrowserRouter & SSR",
+  "description": "React Practices - Routing",
   "main": "index.js",
   "scripts": {
     "debug": "npx webpack serve --progress --env",
@@ -31,6 +31,7 @@
     "react": "^18.2.0",
     "react-addons-update": "^15.6.3",
     "react-dom": "^18.2.0",
+    "react-router": "^6.18.0",
     "react-router-dom": "^6.18.0"
   }
 }

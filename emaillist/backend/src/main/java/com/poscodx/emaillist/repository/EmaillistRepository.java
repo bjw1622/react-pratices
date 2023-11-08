@@ -14,13 +14,11 @@ public class EmaillistRepository {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<EmaillistVo> findAll() {
-		return sqlSession.selectList("emaillist.findAll");
+	public List<EmaillistVo> findAll(String keyword) {
+		return sqlSession.selectList("emaillist.findAll", keyword);
 	}
 
-	public EmaillistVo add(EmaillistVo emaillistVo) {
-		Long no =  (long)sqlSession.insert("emaillist.insert",emaillistVo);
-		emaillistVo.setNo(no);
-		return emaillistVo;
+	public Boolean insert(EmaillistVo vo) {
+		return sqlSession.insert("emaillist.insert", vo) == 1;
 	}
 }

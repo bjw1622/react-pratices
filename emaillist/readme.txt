@@ -26,7 +26,7 @@
     4) private key 잘 저장하기
 
     5) 접속 테스트
-    # sudo ssh -i mykey.pem baekjaewon@192.168.64.2
+    # sudo ssh -i mykey.pem baekjaewon@192.168.0.155
 
 3-2. deploy: Publish Over SSH 플러그인(jenkins)
 1) Publish Over SSH 플러그인 설치
